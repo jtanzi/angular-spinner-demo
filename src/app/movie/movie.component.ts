@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { loadInternal } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-movie',
@@ -13,7 +12,7 @@ export class MovieComponent implements OnInit {
 
 
   private omdbApiUrl = 'http://www.omdbapi.com/?apikey=';
-  private apiKey = 'f805b4ff';
+  private apiKey = 'your_OMDB_API_key';
   movie: any;
   showError = false;
   message = '';
