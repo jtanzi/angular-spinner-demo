@@ -13,8 +13,8 @@ export class MovieComponent implements OnInit {
 
   private omdbApiUrl = 'http://www.omdbapi.com/?apikey=';
   private apiKey = 'your_OMDB_API_key';
-  movie: any;
-  showError = false;
+  movie: any; // Stores the movie data
+  showError = false;  // State variable
   message = '';
   searchForm: FormGroup;
   loading$ = new BehaviorSubject(false);
