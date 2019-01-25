@@ -8,13 +8,14 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent {
 
 
   private omdbApiUrl = 'http://www.omdbapi.com/?apikey=';
-  private apiKey = 'your_OMDB_API_key';
+  // private apiKey = 'your_OMDB_API_key';
+  private apiKey = 'f805b4ff';
   movie: any; // Stores the movie data
-  showError = false;  // State variable
+  showError$ = new BehaviorSubject(false);  // State variable
   message = '';
   searchForm: FormGroup;
   loading$ = new BehaviorSubject(false);
@@ -29,15 +30,12 @@ export class MovieComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   onSearchClicked(): void {
 
     // Indicate loading status
     this.loading$.next(true);
     // Reset component variables
-    this.showError = false;
+    this.showError$.next(false);
     this.message = '';
     const term = this.searchForm.get('search').value;
 
@@ -50,7 +48,7 @@ export class MovieComponent implements OnInit {
         if (success.Error) {
           this.movie = null;
           this.message = 'Sorry, cannot find that one. Maybe try another title?';
-          this.showError = true;
+          this.showError$.next(true);
         } else {
 
           // Populate the movie data for the form
@@ -70,7 +68,8 @@ export class MovieComponent implements OnInit {
       }, (error) => { // HTTP error response condition
         this.movie = null;
         this.message = 'Sorry, that search did not work, server responded with error.';
-        this.showError = true;
+        this.showError$.next(true);
+        this.loading$.next(false);
       });
 
     }, 1500);

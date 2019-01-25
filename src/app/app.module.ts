@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppSpinnerComponent } from './app-spinner/app-spinner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieComponent
+    MovieComponent,
+    AppSpinnerComponent
   ],
   imports: [
     BrowserModule,

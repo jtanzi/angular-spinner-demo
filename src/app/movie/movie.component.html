@@ -1,9 +1,12 @@
 <div class="movie-component-main">
+  <!-- The search form -->
   <div [formGroup]="searchForm">
     <input type="text" id="search-input" formControlName="search" (keyup.enter)="onSearchClicked()">
     <button type="button" (click)="onSearchClicked()">Search</button>
   </div>
-  <div *ngIf="!showError && movie && (loading$ | async) === false" class="movie-details">
+
+  <!-- The Movie Details section -->
+  <div *ngIf="(showError$ | async) === false && movie && (loading$ | async) === false" class="movie-details">
     <div><span>Title:</span><span>{{movie.title}}</span></div>
     <div><span>Year:</span><span>{{movie.year}}</span></div>
     <div><span>Rating:</span><span>{{movie.rating}}</span></div>
@@ -11,8 +14,15 @@
     <div><span>Genre:</span><span>{{movie.genre}}</span></div>
     <div><span>Director:</span><span>{{movie.director}}</span></div>
   </div>
-  <div *ngIf="showError && (loading$ | async)===false">
+
+  <!-- The Error Message -->
+  <div *ngIf="(showError$ | async) === true && (loading$ | async) === false">
     <p>{{message}}</p>
   </div>
-  <mat-spinner class="movie-spinner" *ngIf="(loading$ | async) === true" diameter="40" strokeWidth="2"></mat-spinner>
+
+  <!-- The Spinner -->
+  <!-- <mat-spinner class="movie-spinner" *ngIf="(loading$ | async) === true" diameter="40" strokeWidth="2"></mat-spinner>
+   -->
+   <app-app-spinner *ngIf="(loading$ | async) === true"></app-app-spinner>
+  
 </div>
