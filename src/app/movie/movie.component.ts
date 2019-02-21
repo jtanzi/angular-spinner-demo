@@ -12,8 +12,7 @@ export class MovieComponent {
 
 
   private omdbApiUrl = 'http://www.omdbapi.com/?apikey=';
-  // private apiKey = 'your_OMDB_API_key';
-  private apiKey = 'f805b4ff';
+  private apiKey = 'your_OMDB_API_key';
   movie: any; // Stores the movie data
   showError$ = new BehaviorSubject(false);  // State variable
   message = '';
