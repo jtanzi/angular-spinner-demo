@@ -23,6 +23,9 @@
   <!-- The Spinner -->
   <!-- <mat-spinner class="movie-spinner" *ngIf="(loading$ | async) === true" diameter="40" strokeWidth="2"></mat-spinner>
    -->
-   <app-app-spinner *ngIf="(loading$ | async) === true"></app-app-spinner>
+  <div class="movie-spinner">
+    <app-app-spinner *ngIf="(loading$ | async) === true"></app-app-spinner>
+  </div>
+   
   
 </div>

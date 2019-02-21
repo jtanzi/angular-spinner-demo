@@ -21,5 +21,6 @@
 }
 
 .movie-spinner {
-    margin: 36px auto;
+    width: 250px;
+    margin: 36px 42.5%;
 }
